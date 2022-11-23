@@ -34,12 +34,15 @@
         :movie="movie"
       />
     </div>
-    <div class="search" v-else>Search</div>
+    <div class="search" v-else>
+      <Search/>
+    </div>
   </main>
 </template>
 
 <script setup>
 import { useMovieStore } from "./stores/movieStore";
+import Search from "./components/Search.vue";
 import Movie from "./components/Movie.vue";
 
 const setTab = (id) => {
