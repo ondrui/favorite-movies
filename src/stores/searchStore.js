@@ -1,4 +1,6 @@
 import { defineStore } from "pinia";
+import { useMovieStore } from "./movieStore";
+
 const url =
   "https:api.themoviedb.org/3/search/movie?api_key=046969feb46ee93d2761e313609f0878&query=";
 
@@ -16,5 +18,10 @@ export const useSearchStore = defineStore("searchStore", {
       this.movies = data.results;
       this.loader = false;
     },
+    addToUserMovies(object) {
+      const movieStore = useMovieStore();
+      movieStore.movies.push({...object, isWatched: false});
+      movieStore.activeTab = 1;
+    }
   },
 });
